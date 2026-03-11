@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Квест в Большом Египетском музее</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="quest-app" id="app">
+  <!-- START SCREEN -->
+  <section class="screen screen--start active" id="screen-start">
+    <div class="start-content">
+      <img src="./assets/hero.jpg" alt="Кошка-исследовательница Бастет на фоне пирамид" class="hero-image" width="800" height="450">
+      <h1 class="quest-title">Тайны Большого Египетского музея</h1>
+      <p class="quest-subtitle">Квест-приключение для юных исследователей</p>
+      <p class="quest-desc">Кошка Бастет потеряла 7 волшебных сокровищ по всему музею. Помоги ей найти их все и разгадать тайну фараонов!</p>
+      <div class="quest-info">
+        <span class="info-badge">30-45 минут</span>
+        <span class="info-badge">7 заданий</span>
+        <span class="info-badge">3-6 лет</span>
+      </div>
+      <button class="btn btn--primary btn--large" onclick="startQuest()">
+        Начать приключение
+      </button>
+    </div>
+  </section>
+
+  <!-- TASK SCREENS -->
+  <!-- Task 1: Entrance / Ramses -->
+  <section class="screen screen--task" id="screen-task-1">
+    <div class="task-header">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-1" style="width: 14.28%"></div>
+      </div>
+      <span class="task-counter">Задание 1 из 7</span>
+    </div>
+    <div class="task-content">
+      <img src="./assets/ramses.jpg" alt="Огромная статуя фараона Рамзеса II" class="task-image" width="400" height="400">
+      <h2 class="task-title">Великан у входа</h2>
+      <p class="task-location">Большой зал (вход в музей)</p>
+      <div class="task-story">
+        <p>Бастет говорит: «Когда вы войдёте в музей, вас встретит ОГРОМНЫЙ каменный великан! Это статуя фараона Рамзеса II. Ему больше 3000 лет!»</p>
+      </div>
+      <div class="task-mission">
+        <h3>Что нужно сделать:</h3>
+        <ul>
+          <li>Найдите гигантскую статую Рамзеса II в Большом зале</li>
+          <li>Встаньте рядом и попробуйте дотянуться до его колена — получится?</li>
+          <li>Посчитайте: сколько пальцев на одной руке статуи?</li>
+        </ul>
+      </div>
+      <div class="task-fun-fact">
+        <span class="fun-fact-label">А ты знал?</span>
+        <p>Эта статуя высотой 11 метров — это как дом в 4 этажа! А весит она как 90 автомобилей!</p>
+      </div>
+      <div class="task-question">
+        <p class="question-text">Из какого камня сделана статуя?</p>
+        <div class="answer-buttons">
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Белый мрамор</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, true)">Красный гранит</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Жёлтый песчаник</button>
+        </div>
+        <div class="answer-feedback" id="feedback-1"></div>
+      </div>
+      <button class="btn btn--primary btn--next hidden" id="next-1" onclick="goToTask(2)">Дальше</button>
+    </div>
+  </section>
+
+  <!-- Task 2: Hanging Obelisk -->
+  <section class="screen screen--task" id="screen-task-2">
+    <div class="task-header">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 28.56%"></div>
+      </div>
+      <span class="task-counter">Задание 2 из 7</span>
+    </div>
+    <div class="task-content">
+      <img src="./assets/ramses.jpg" alt="Висящий обелиск" class="task-image" width="400" height="400">
+      <h2 class="task-title">Летающий камень</h2>
+      <p class="task-location">Площадь перед входом</p>
+      <div class="task-story">
+        <p>Бастет шепчет: «Посмотрите наверх! Видите огромный каменный столб, который ВИСИТ в воздухе? Это обелиск фараона Рамзеса II. Египтяне подвесили его специально для этого музея!»</p>
+      </div>
+      <div class="task-mission">
+        <h3>Что нужно сделать:</h3>
+        <ul>
+          <li>Найдите висящий обелиск на площади перед входом</li>
+          <li>Пройдите прямо под ним и посмотрите наверх</li>
+          <li>Найдите на подставке слово «Египет» — оно написано на разных языках!</li>
+        </ul>
+      </div>
+      <div class="task-fun-fact">
+        <span class="fun-fact-label">А ты знал?</span>
+        <p>Это первый подвешенный обелиск в Египте! Обычно они стоят на земле, а этот парит в воздухе, как по волшебству!</p>
+      </div>
+      <div class="task-question">
+        <p class="question-text">Что написано на обелиске?</p>
+        <div class="answer-buttons">
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Буквы</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, true)">Иероглифы</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Цифры</button>
+        </div>
+        <div class="answer-feedback" id="feedback-2"></div>
+      </div>
+      <button class="btn btn--primary btn--next hidden" id="next-2" onclick="goToTask(3)">Дальше</button>
+    </div>
+  </section>
+
+  <!-- Task 3: Grand Staircase -->
+  <section class="screen screen--task" id="screen-task-3">
+    <div class="task-header">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 42.84%"></div>
+      </div>
+      <span class="task-counter">Задание 3 из 7</span>
+    </div>
+    <div class="task-content">
+      <img src="./assets/staircase.jpg" alt="Большая лестница с статуями" class="task-image" width="400" height="400">
+      <h2 class="task-title">Лестница королей</h2>
+      <p class="task-location">Большая лестница</p>
+      <div class="task-story">
+        <p>Бастет радуется: «Теперь поднимемся по самой красивой лестнице в мире! Вдоль неё стоят статуи древних царей и цариц. Они охраняют путь наверх уже тысячи лет!»</p>
+      </div>
+      <div class="task-mission">
+        <h3>Что нужно сделать:</h3>
+        <ul>
+          <li>Поднимитесь по Большой лестнице</li>
+          <li>Найдите статую, у которой на голове корона в виде двух перьев</li>
+          <li>Попробуйте встать в такую же позу, как одна из статуй!</li>
+        </ul>
+      </div>
+      <div class="task-fun-fact">
+        <span class="fun-fact-label">А ты знал?</span>
+        <p>У египетских фараонов было две короны: белая — Верхнего Египта и красная — Нижнего. А когда фараон правил всем Египтом, он носил обе сразу!</p>
+      </div>
+      <div class="task-question">
+        <p class="question-text">Кого ещё, кроме царей, можно увидеть среди статуй на лестнице?</p>
+        <div class="answer-buttons">
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Животных</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Детей</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, true)">Цариц и богов</button>
+        </div>
+        <div class="answer-feedback" id="feedback-3"></div>
+      </div>
+      <button class="btn btn--primary btn--next hidden" id="next-3" onclick="goToTask(4)">Дальше</button>
+    </div>
+  </section>
+
+  <!-- Task 4: Tutankhamun Golden Mask -->
+  <section class="screen screen--task" id="screen-task-4">
+    <div class="task-header">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 57.12%"></div>
+      </div>
+      <span class="task-counter">Задание 4 из 7</span>
+    </div>
+    <div class="task-content">
+      <img src="./assets/mask.jpg" alt="Золотая маска Тутанхамона" class="task-image" width="400" height="400">
+      <h2 class="task-title">Золотая маска</h2>
+      <p class="task-location">Галереи Тутанхамона</p>
+      <div class="task-story">
+        <p>Бастет затаила дыхание: «Это самое главное сокровище музея! Золотая маска молодого фараона Тутанхамона. Она сделана из чистого золота и весит 11 килограмм!»</p>
+      </div>
+      <div class="task-mission">
+        <h3>Что нужно сделать:</h3>
+        <ul>
+          <li>Найдите знаменитую золотую маску Тутанхамона</li>
+          <li>Посмотрите: какое животное у фараона на лбу? (Подсказка: оно шипит!)</li>
+          <li>Рассмотрите полоски на головном уборе — какого они цвета?</li>
+        </ul>
+      </div>
+      <div class="task-fun-fact">
+        <span class="fun-fact-label">А ты знал?</span>
+        <p>Тутанхамон стал фараоном, когда ему было всего 9 лет — он был почти как вы! А его гробницу нашли только 100 лет назад, и там было больше 5000 сокровищ!</p>
+      </div>
+      <div class="task-question">
+        <p class="question-text">Какое животное изображено на лбу маски?</p>
+        <div class="answer-buttons">
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Кошка</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, true)">Кобра (змея)</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Орёл</button>
+        </div>
+        <div class="answer-feedback" id="feedback-4"></div>
+      </div>
+      <button class="btn btn--primary btn--next hidden" id="next-4" onclick="goToTask(5)">Дальше</button>
+    </div>
+  </section>
+
+  <!-- Task 5: Khufu's Solar Boat -->
+  <section class="screen screen--task" id="screen-task-5">
+    <div class="task-header">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 71.4%"></div>
+      </div>
+      <span class="task-counter">Задание 5 из 7</span>
+    </div>
+    <div class="task-content">
+      <img src="./assets/boat.jpg" alt="Солнечная ладья Хуфу" class="task-image" width="400" height="400">
+      <h2 class="task-title">Корабль фараона</h2>
+      <p class="task-location">Музей Солнечной ладьи Хуфу</p>
+      <div class="task-story">
+        <p>Бастет удивляется: «Вау! Посмотрите на этот огромный деревянный корабль! Ему 4600 лет! Египтяне верили, что на нём фараон Хуфу плавает по небу вместе с богом солнца Ра!»</p>
+      </div>
+      <div class="task-mission">
+        <h3>Что нужно сделать:</h3>
+        <ul>
+          <li>Найдите Солнечную ладью фараона Хуфу</li>
+          <li>Попробуйте сосчитать, сколько вёсел у ладьи</li>
+          <li>Представьте, что вы плывёте по реке Нил — куда бы вы поплыли?</li>
+        </ul>
+      </div>
+      <div class="task-fun-fact">
+        <span class="fun-fact-label">А ты знал?</span>
+        <p>Эта лодка длиной 43 метра — это как половина футбольного поля! Её нашли закопанной рядом с Великой пирамидой, разобранной на 1224 части, как огромный пазл!</p>
+      </div>
+      <div class="task-question">
+        <p class="question-text">Из чего сделана ладья?</p>
+        <div class="answer-buttons">
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Из камня</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Из металла</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, true)">Из дерева</button>
+        </div>
+        <div class="answer-feedback" id="feedback-5"></div>
+      </div>
+      <button class="btn btn--primary btn--next hidden" id="next-5" onclick="goToTask(6)">Дальше</button>
+    </div>
+  </section>
+
+  <!-- Task 6: Pyramids Window View -->
+  <section class="screen screen--task" id="screen-task-6">
+    <div class="task-header">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 85.68%"></div>
+      </div>
+      <span class="task-counter">Задание 6 из 7</span>
+    </div>
+    <div class="task-content">
+      <img src="./assets/pyramids.jpg" alt="Вид на пирамиды из окна музея" class="task-image" width="400" height="400">
+      <h2 class="task-title">Окно в прошлое</h2>
+      <p class="task-location">Верхний этаж (панорамное окно)</p>
+      <div class="task-story">
+        <p>Бастет подмигивает: «Поднимитесь на верхний этаж и найдите большое окно. Оттуда видно настоящие пирамиды Гизы! Это одно из семи чудес древнего мира — и единственное, которое сохранилось!»</p>
+      </div>
+      <div class="task-mission">
+        <h3>Что нужно сделать:</h3>
+        <ul>
+          <li>Найдите панорамное окно с видом на пирамиды</li>
+          <li>Сосчитайте, сколько пирамид вы видите</li>
+          <li>Какая из них самая большая? Покажите на неё!</li>
+        </ul>
+      </div>
+      <div class="task-fun-fact">
+        <span class="fun-fact-label">А ты знал?</span>
+        <p>Самая большая — пирамида Хуфу. Она была самым высоким зданием в мире почти 4000 лет! Чтобы её построить, понадобилось 2 миллиона каменных блоков!</p>
+      </div>
+      <div class="task-question">
+        <p class="question-text">Сколько больших пирамид стоит в Гизе?</p>
+        <div class="answer-buttons">
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Две</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, true)">Три</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Пять</button>
+        </div>
+        <div class="answer-feedback" id="feedback-6"></div>
+      </div>
+      <button class="btn btn--primary btn--next hidden" id="next-6" onclick="goToTask(7)">Дальше</button>
+    </div>
+  </section>
+
+  <!-- Task 7: Scarab Hunt -->
+  <section class="screen screen--task" id="screen-task-7">
+    <div class="task-header">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 100%"></div>
+      </div>
+      <span class="task-counter">Задание 7 из 7</span>
+    </div>
+    <div class="task-content">
+      <img src="./assets/mask.jpg" alt="Египетские сокровища" class="task-image" width="400" height="400">
+      <h2 class="task-title">Охота на скарабея</h2>
+      <p class="task-location">Любые галереи музея</p>
+      <div class="task-story">
+        <p>Бастет просит: «Последнее задание! Скарабей — это священный жук-талисман египтян. Они верили, что он приносит удачу. В музее скарабеи повсюду — на украшениях, на саркофагах, на стенах!»</p>
+      </div>
+      <div class="task-mission">
+        <h3>Что нужно сделать:</h3>
+        <ul>
+          <li>Найдите в залах музея 3 изображения жука-скарабея</li>
+          <li>Где вы их нашли? На украшении? На стене? На саркофаге?</li>
+          <li>Покажите взрослым, когда найдёте!</li>
+        </ul>
+      </div>
+      <div class="task-fun-fact">
+        <span class="fun-fact-label">А ты знал?</span>
+        <p>Египтяне верили, что скарабей катит солнце по небу, как настоящий жук катит свой шарик! Поэтому его считали символом солнца и новой жизни.</p>
+      </div>
+      <div class="task-question">
+        <p class="question-text">Что скарабей символизировал для древних египтян?</p>
+        <div class="answer-buttons">
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Луну</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, true)">Солнце</button>
+          <button class="btn btn--answer" onclick="checkAnswer(this, false)">Дождь</button>
+        </div>
+        <div class="answer-feedback" id="feedback-7"></div>
+      </div>
+      <button class="btn btn--primary btn--next hidden" id="next-7" onclick="goToFinish()">Открыть сокровище!</button>
+    </div>
+  </section>
+
+  <!-- FINISH SCREEN -->
+  <section class="screen screen--finish" id="screen-finish">
+    <div class="finish-content">
+      <img src="./assets/treasure.jpg" alt="Сундук с сокровищами" class="finish-image" width="400" height="400">
+      <div class="finish-stars" id="finish-stars"></div>
+      <h2 class="finish-title">Поздравляем, исследователи!</h2>
+      <p class="finish-text">Вы нашли все 7 сокровищ Бастет и разгадали тайны Большого Египетского музея!</p>
+      <div class="finish-score" id="finish-score"></div>
+      <div class="finish-certificate">
+        <div class="certificate-inner">
+          <p class="certificate-label">Сертификат</p>
+          <p class="certificate-title">Юный египтолог</p>
+          <p class="certificate-text">Большой Египетский музей, Гиза</p>
+          <p class="certificate-date" id="cert-date"></p>
+        </div>
+      </div>
+      <button class="btn btn--primary btn--large" onclick="restartQuest()">Пройти ещё раз</button>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">
+    Created with Perplexity Computer
+  </a>
+</footer>
+
+<script src="./app.js"></script>
+</body>
+</html>
